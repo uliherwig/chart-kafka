@@ -1,5 +1,5 @@
 global:
-  projectName: bn-project
+  projectName: bn-kafka
   appVersion: 0.0.1
 
 zookeeper:
