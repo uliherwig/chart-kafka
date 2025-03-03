@@ -4,6 +4,8 @@ global:
 
 zookeeper:
   replicaCount: 1
+  service:
+    name: zookeeper
   persistence:
     enabled: true
     size: 8Gi
@@ -17,6 +19,10 @@ zookeeper:
 
 kafka:
   replicaCount: 1
+
+  service:
+    name: kafka
+
   persistence:
     enabled: true
     size: 10Gi
