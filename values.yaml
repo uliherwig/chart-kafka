@@ -19,6 +19,7 @@ zookeeper:
 
 kafka:
   replicaCount: 1
+  fullnameOverride: kafka
 
   service:
     name: kafka
