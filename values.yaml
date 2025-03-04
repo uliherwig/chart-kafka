@@ -4,6 +4,7 @@ global:
 
 zookeeper:
   replicaCount: 1
+  fullnameOverride: zookeeper
   service:
     name: zookeeper
   persistence:
@@ -23,6 +24,16 @@ kafka:
 
   service:
     name: kafka
+
+  extraEnvVars:
+    - name: KAFKA_CFG_LISTENERS
+      value: PLAINTEXT://:9092
+    - name: KAFKA_CFG_ADVERTISED_LISTENERS
+      value: PLAINTEXT://kafka.bn-project.svc.cluster.local:9092
+    - name: KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP
+      value: PLAINTEXT:PLAINTEXT
+    - name: KAFKA_CFG_INTER_BROKER_LISTENER_NAME
+      value: PLAINTEXT
 
   persistence:
     enabled: true
