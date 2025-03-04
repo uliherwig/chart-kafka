@@ -40,6 +40,13 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          env:
+            - name: KAFKA_ZOOKEEPER_CONNECT
+              value: {{ .Values.configuration.KAFKA_ZOOKEEPER_CONNECT }}
+            - name: KAFKA_ADVERTISED_LISTENERS
+              value: {{ .Values.configuration.KAFKA_ADVERTISED_LISTENERS }}
+            - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
+              value: {{ .Values.configuration.KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR }}
           livenessProbe:
             httpGet:
               path: /
