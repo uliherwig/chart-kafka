@@ -3,45 +3,102 @@ global:
   appVersion: 0.0.1
 
 zookeeper:
-  replicaCount: 1
-  fullnameOverride: zookeeper
+  image:
+    repository: wurstmeister/zookeeper
+    pullPolicy: IfNotPresent
+    tag: "latest"
+  containerName: zookeeper
+  nameOverride: "zookeeper"
+  fullnameOverride: "zookeeper"
+  ports:
+    - name: client
+      containerPort: 2181
   service:
-    name: zookeeper
-  persistence:
-    enabled: true
-    size: 8Gi
-  resources:
-    requests:
-      memory: 512Mi
-      cpu: 250m
-    limits:
-      memory: 1Gi
-      cpu: 500m
+    type: ClusterIP
+    port: 2181
 
 kafka:
-  replicaCount: 1
-  fullnameOverride: kafka
-
+  image:
+    repository: wurstmeister/kafka
+    pullPolicy: IfNotPresent
+    tag: "latest"
+  containerName: kafka
+  nameOverride: "kafka"
+  fullnameOverride: "kafka"
+  ports:
+    - name: broker
+      containerPort: 9092
+  environment:
+    KAFKA_ADVERTISED_HOST_NAME: localhost
+    KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+  volumes:
+    - name: docker-sock
+      path: /var/run/docker.sock
   service:
-    name: kafka
+    type: ClusterIP
+    port: 9092
+  dependsOn:
+    - zookeeper
 
-  extraEnvVars:
-    - name: KAFKA_CFG_LISTENERS
-      value: PLAINTEXT://:9092
-    - name: KAFKA_CFG_ADVERTISED_LISTENERS
-      value: PLAINTEXT://kafka.bn-project.svc.cluster.local:9092
-    - name: KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP
-      value: PLAINTEXT:PLAINTEXT
-    - name: KAFKA_CFG_INTER_BROKER_LISTENER_NAME
-      value: PLAINTEXT
+#   zookeeper:
+#     image: wurstmeister/zookeeper
+#     container_name: zookeeper
+#     ports:
+#       - "2181:2181"
 
-  persistence:
-    enabled: true
-    size: 10Gi
-  resources:
-    requests:
-      memory: 1Gi
-      cpu: 500m
-    limits:
-      memory: 2Gi
-      cpu: 1000m
+#   kafka:
+#     image: wurstmeister/kafka
+#     container_name: kafka
+#     ports:
+#       - "9092:9092"
+#     environment:
+#       KAFKA_ADVERTISED_HOST_NAME: localhost
+#       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+#     volumes:
+#       - /var/run/docker.sock:/var/run/docker.sock
+#     depends_on:
+#       - zookeeper
+
+# zookeeper:
+#   replicaCount: 1
+#   fullnameOverride: zookeeper
+#   service:
+#     name: zookeeper
+#   persistence:
+#     enabled: true
+#     size: 8Gi
+#   resources:
+#     requests:
+#       memory: 512Mi
+#       cpu: 250m
+#     limits:
+#       memory: 1Gi
+#       cpu: 500m
+
+# kafka:
+  # replicaCount: 1
+  # fullnameOverride: kafka
+
+  # service:
+  #   name: kafka
+
+  # extraEnvVars:
+  #   - name: KAFKA_CFG_LISTENERS
+  #     value: PLAINTEXT://:9092
+  #   - name: KAFKA_CFG_ADVERTISED_LISTENERS
+  #     value: PLAINTEXT://kafka.bn-project.svc.cluster.local:9092
+  #   - name: KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP
+  #     value: PLAINTEXT:PLAINTEXT
+  #   - name: KAFKA_CFG_INTER_BROKER_LISTENER_NAME
+  #     value: PLAINTEXT
+
+  # persistence:
+  #   enabled: true
+  #   size: 10Gi
+  # resources:
+  #   requests:
+  #     memory: 1Gi
+  #     cpu: 500m
+  #   limits:
+  #     memory: 2Gi
+  #     cpu: 1000m
