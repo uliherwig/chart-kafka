@@ -3,7 +3,7 @@ entries:
   bn-kafka:
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2025-06-02T10:54:29.1465546+02:00"
+    created: "2025-06-02T14:09:05.7670331+02:00"
     dependencies:
     - name: kafka
       repository: ""
@@ -12,10 +12,27 @@ entries:
       repository: ""
       version: 13.7.0
     description: BN Project Helm Charts
-    digest: 94fa8f90887893c793e730162c8f6c86efde42fc2f1c1c0d9dc594fc801cd23d
+    digest: 378761933755e0a5ced493651a9c9401813798949500c9a46eee87f8dae05c69
+    name: bn-kafka
+    type: application
+    urls:
+    - bn-kafka-1.0.9.tgz
+    version: 1.0.9
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-06-02T14:09:05.7659964+02:00"
+    dependencies:
+    - name: kafka
+      repository: ""
+      version: 31.1.0
+    - name: zookeeper
+      repository: ""
+      version: 13.7.0
+    description: BN Project Helm Charts
+    digest: c9aa61ecd92aff5695415777af1f204c452ae28c40bd767644069947aba03075
     name: bn-kafka
     type: application
     urls:
     - bn-kafka-1.0.8.tgz
     version: 1.0.8
-generated: "2025-06-02T10:54:29.1422841+02:00"
+generated: "2025-06-02T14:09:05.7508074+02:00"

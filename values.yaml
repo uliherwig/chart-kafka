@@ -10,7 +10,7 @@ zookeeper:
     repository: wurstmeister/zookeeper
     tag: latest
     pullPolicy: IfNotPresent
-  replicaCount: 3
+  replicaCount: 1
   resources:
     requests:
       memory: "128Mi"
@@ -29,7 +29,7 @@ kafka:
     repository: wurstmeister/kafka
     tag: latest
     pullPolicy: IfNotPresent
-  replicaCount: 3
+  replicaCount: 1
   resources:
     requests:
       memory: "256Mi"
