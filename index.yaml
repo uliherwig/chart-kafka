@@ -3,7 +3,7 @@ entries:
   bn-kafka:
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2025-06-02T14:48:43.073699+02:00"
+    created: "2025-06-02T15:05:09.5079831+02:00"
     dependencies:
     - name: kafka
       repository: ""
@@ -12,10 +12,10 @@ entries:
       repository: ""
       version: 13.7.0
     description: BN Project Helm Charts
-    digest: 181511620bd1c640cc2754f669ed053a40bae2c808165842a32e62c6eb9cd509
+    digest: 8fc6260451c9447c05d507630795e77b5ffa7c2c188611b394cc475b23b18185
     name: bn-kafka
     type: application
     urls:
-    - bn-kafka-1.0.11.tgz
-    version: 1.0.11
-generated: "2025-06-02T14:48:43.0726594+02:00"
+    - bn-kafka-1.0.12.tgz
+    version: 1.0.12
+generated: "2025-06-02T15:05:09.5069382+02:00"
