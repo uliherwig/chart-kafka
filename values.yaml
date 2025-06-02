@@ -11,6 +11,9 @@ zookeeper:
     tag: latest
     pullPolicy: IfNotPresent
   replicaCount: 1
+  fullname: "zookeeper"
+  nameOverride: "zookeeper"
+  fullnameOverride: "zookeeper"
   resources:
     requests:
       memory: "128Mi"
@@ -29,7 +32,11 @@ kafka:
     repository: wurstmeister/kafka
     tag: latest
     pullPolicy: IfNotPresent
+  
   replicaCount: 1
+  fullname: "kafka"
+  nameOverride: "kafka"
+  fullnameOverride: "kafka"
   resources:
     requests:
       memory: "256Mi"
