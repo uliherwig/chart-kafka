@@ -16,6 +16,6 @@ entries:
     name: bn-kafka
     type: application
     urls:
-    - bn-kafka-1.0.7.tgz
-    version: 1.0.7
+    - bn-kafka-1.0.8.tgz
+    version: 1.0.8
 generated: "2025-06-02T10:54:29.1422841+02:00"
